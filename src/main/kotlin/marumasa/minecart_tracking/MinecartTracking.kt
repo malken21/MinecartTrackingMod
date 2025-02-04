@@ -1,10 +1,10 @@
-package marumasa.minecart_tracking_mod
+package marumasa.minecart_tracking
 
 import com.mojang.logging.LogUtils
 import net.fabricmc.api.ModInitializer
 import org.slf4j.Logger
 
-class MinecartTrackingMod : ModInitializer {
+class MinecartTracking : ModInitializer {
 
     override fun onInitialize() {
         LOGGER.info("Start: $MOD_ID")
@@ -12,6 +12,6 @@ class MinecartTrackingMod : ModInitializer {
 
     companion object {
         val LOGGER: Logger = LogUtils.getLogger()
-        val MOD_ID: String = "minecart_tracking_mod"
+        const val MOD_ID: String = "minecart_tracking"
     }
 }

@@ -27,7 +27,7 @@ loom {
     splitEnvironmentSourceSets()
 
     mods {
-        register("minecart_tracking_mod") {
+        register("minecart_tracking") {
             sourceSet("main")
             sourceSet("client")
         }

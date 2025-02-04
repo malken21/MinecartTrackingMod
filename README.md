@@ -1,4 +1,4 @@
-# MinecartTrackingMod
+# MinecartTracking
 
 トロッコの進行方向に視点を追従するMinecraft Fabric Mod
 

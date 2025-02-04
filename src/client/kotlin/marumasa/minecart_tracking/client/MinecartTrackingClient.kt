@@ -1,4 +1,4 @@
-package marumasa.minecart_tracking_mod.client
+package marumasa.minecart_tracking.client
 
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
@@ -8,18 +8,18 @@ import net.minecraft.util.math.Vec3d
 import kotlin.math.IEEErem
 import kotlin.math.atan2
 
-class MinecartTrackingModClient : ClientModInitializer {
+class MinecartTrackingClient : ClientModInitializer {
 
     private var currentYaw = 0.0
     private var lastRenderTime = 0.0
-    val smoothSpeed = 5 // 追従速度
+    private val smoothSpeed = 5 // 追従速度
 
     override fun onInitializeClient() {
         WorldRenderEvents.START.register {
             val player = MinecraftClient.getInstance().player
 
             if (player == null || player.vehicle !is AbstractMinecartEntity) {
-                currentYaw = 0.0;
+                currentYaw = 0.0
                 return@register
             }
 

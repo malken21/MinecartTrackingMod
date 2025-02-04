@@ -7,14 +7,14 @@
   "authors": [],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/minecart_tracking_mod/icon.png",
+  "icon": "assets/minecart_tracking/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "marumasa.minecart_tracking_mod.client.MinecartTrackingModClient"
+      "marumasa.minecart_tracking.client.MinecartTrackingClient"
     ],
     "main": [
-      "marumasa.minecart_tracking_mod.MinecartTrackingMod"
+      "marumasa.minecart_tracking.MinecartTracking"
     ]
   },
   "depends": {
