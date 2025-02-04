@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "minecart_tracking_mod",
+  "version": "${version}",
+  "name": "MinecartTrackingMod",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/minecart_tracking_mod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "marumasa.minecart_tracking_mod.client.MinecartTrackingModClient"
+    ],
+    "main": [
+      "marumasa.minecart_tracking_mod.MinecartTrackingMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
