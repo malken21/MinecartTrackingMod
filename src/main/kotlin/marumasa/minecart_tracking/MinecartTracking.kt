@@ -12,6 +12,7 @@ class MinecartTracking : ModInitializer {
 
     companion object {
         val LOGGER: Logger = LogUtils.getLogger()
+        val CONFIG: Config = Config()
         const val MOD_ID: String = "minecart_tracking"
     }
 }

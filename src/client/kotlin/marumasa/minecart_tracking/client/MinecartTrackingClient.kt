@@ -1,5 +1,6 @@
 package marumasa.minecart_tracking.client
 
+import marumasa.minecart_tracking.MinecartTracking.Companion.CONFIG
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
@@ -12,8 +13,6 @@ import kotlin.math.asin
 import kotlin.math.atan2
 
 class MinecartTrackingClient : ClientModInitializer {
-
-    private val smoothSpeed: Float = 5f // 追従速度
 
     private var player: ClientPlayerEntity? = null
     private var minecartVectorManager: MinecartVectorManager? = null
@@ -34,8 +33,10 @@ class MinecartTrackingClient : ClientModInitializer {
             if (targetVec == Vec3d.ZERO)
                 return@register
 
-            player.yaw = genYaw(targetVec, player, smoothSpeed, deltaTime)
-            player.pitch = genPitch(targetVec, player, smoothSpeed, deltaTime)
+            if (CONFIG.TrackingYaw)
+                player.yaw = genYaw(targetVec, player, CONFIG.SmoothSpeedYaw, deltaTime)
+            if (CONFIG.TrackingPitch)
+                player.pitch = genPitch(targetVec, player, CONFIG.SmoothSpeedPitch, deltaTime)
         }
 
         ClientTickEvents.START_CLIENT_TICK.register { client ->
