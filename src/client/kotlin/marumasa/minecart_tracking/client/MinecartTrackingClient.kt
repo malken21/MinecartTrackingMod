@@ -84,29 +84,29 @@ class MinecartTrackingClient : ClientModInitializer {
 
     companion object {
         fun genYaw(targetVec: Vec3d, player: ClientPlayerEntity, smoothSpeed: Float, deltaTime: Double): Float {
-            // 目的の値
+            // 目標の値
             val targetYaw = Math.toDegrees(atan2(-targetVec.x, targetVec.z))
             // 現在の値
             var currentYaw = player.yaw.toDouble()
             // 差分の値
             val deltaYaw = (targetYaw - currentYaw).IEEErem(360.0)// -180から180度の範囲
-            //deltaTimeをかけることでフレームレートに依存しない追従速度になる
-            currentYaw += deltaYaw * smoothSpeed * deltaTime
+            // deltaTimeをかけることでフレームレートに依存しない追従速度になる
+            currentYaw += deltaYaw * minOf(smoothSpeed * deltaTime, 1.0)
             // -180から180度の範囲にして Float
             return currentYaw.IEEErem(360.0).toFloat()
         }
 
         fun genPitch(targetVec: Vec3d, player: ClientPlayerEntity, smoothSpeed: Float, deltaTime: Double): Float {
-            // 目的の値
+            // 目標の値
             val targetPitch = Math.toDegrees(asin(-targetVec.y))
             // 現在の値
             var currentPitch = player.pitch.toDouble()
             // 差分の値
-            val deltaPitch = (targetPitch - currentPitch).IEEErem(360.0)// -180から180度の範囲
-            //deltaTimeをかけることでフレームレートに依存しない追従速度になる
-            currentPitch += deltaPitch * smoothSpeed * deltaTime
-            // -180から180度の範囲にして Float
-            return currentPitch.IEEErem(360.0).toFloat()
+            val deltaPitch = (targetPitch - currentPitch).IEEErem(180.0)// -90から90度の範囲
+            // deltaTimeをかけることでフレームレートに依存しない追従速度になる
+            currentPitch += deltaPitch * minOf(smoothSpeed * deltaTime, 1.0)
+            // -90から90度の範囲にして Float
+            return currentPitch.IEEErem(180.0).toFloat()
         }
     }
 }
