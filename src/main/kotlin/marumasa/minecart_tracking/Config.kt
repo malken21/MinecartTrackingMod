@@ -1,6 +1,7 @@
 package marumasa.minecart_tracking
 
 import com.google.gson.Gson
+import marumasa.minecart_tracking.MinecartTracking.Companion.MOD_ID
 import net.fabricmc.loader.api.FabricLoader
 import java.io.IOException
 import java.nio.file.Files
@@ -65,7 +66,7 @@ class Config {
 
     companion object {
         private val path: Path = FabricLoader.getInstance().configDir.normalize().resolve(
-            MinecartTracking.MOD_ID + ".json"
+            "$MOD_ID.json"
         )
 
         private val gson = Gson()
